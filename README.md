@@ -2,6 +2,10 @@
   
 A basic markdown template to demonstrate the ESB framework. 
   
+## Current Version 
+
+V1 
+
 ## Overview 
 ---  
 - List features and flow business (Recently Added, Fixes, etc) 
