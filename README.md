@@ -29,12 +29,12 @@ Develop
 
 Inchcape UK Company 
 
-# Authors
+## Authors
 
 Adrian S. 
 William M. 
 Christian M. 
 
-# Locations 
+## Locations 
 
-# Tube Station: Green Park/Piccadilly Station
+Tube Station: Green Park/Piccadilly Station
