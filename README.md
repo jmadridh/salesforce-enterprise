@@ -28,3 +28,9 @@ Develop
 ## Terms and Conditions 
 
 Inchcape UK Company 
+
+# Authors
+
+Adrian S. 
+William M. 
+Christian M.
