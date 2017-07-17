@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd">
+    
+    <flow name="GETCustomerSalesforce">
+        <http:listener config-ref="SalesforceAPI_Listener_Configuration" path="/customer" doc:name="HTTP" />
+        <message-property-filter pattern="#[message.inboundProperties['http.request']!='favicon.ico']" caseSensitive="true" doc:name="Favicon"/>
+        <flow-ref name="BusinessFlow" doc:name="BusinessFlow"/>
+        <exception-strategy ref="global-exception-handlerChoice_Exception_Strategy" doc:name="Reference Exception Strategy"/>
+    </flow>
+    <flow name="POSTOperationCustomer">
+        <http:listener config-ref="SalesforceAPI_Listener_Configuration" path="/operation" allowedMethods="POST" doc:name="HTTP"/>
+    	<message-property-filter pattern="#[message.inboundProperties['http.request']!='favicon.ico']" caseSensitive="true" doc:name="Favicon"/>
+        <flow-ref name="BusinessFlow" doc:name="BusinessFlow"/>
+        <json:object-to-json-transformer doc:name="Object to JSON"/>
+        <exception-strategy ref="global-exception-handlerChoice_Exception_Strategy" doc:name="Reference Exception Strategy"/>
+        
+    </flow>
+    
+</mule>
+
